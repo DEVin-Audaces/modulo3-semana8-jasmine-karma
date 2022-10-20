@@ -11,6 +11,7 @@ export class TesteComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   transform(value: string): string{
