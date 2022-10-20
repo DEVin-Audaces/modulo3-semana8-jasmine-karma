@@ -23,22 +23,63 @@ describe('TesteComponent', () => { //suite
     fixture.detectChanges();
   });
 
+  const calculadora = {
+    somar: function(n1: number, n2:number){
+      return n1+n2;
+    }
+  }
+  
   beforeAll(async () => {
-    contador = 10;
-  })
-
-  beforeEach(async () => {
-    contador++;
-  })
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    spyOn(calculadora, 'somar');
   });
 
-  it('deve incrementar o contador para 2', () => {
-    expect(contador).toEqual(12);
-    pending("pq n sei validar esse cenario")
+  // it('deve possuir o metodo somar como não definido', () =>{
+  //   expect(calculadora.somar(1,2)).toBeUndefined();
+  // });
+
+  // it('deve se o metodo somar foi chamado pelo menos uma vez', () =>{
+  //   calculadora.somar(1,2);
+
+  //   expect(calculadora.somar).toHaveBeenCalled();
+  // });
+
+  // it('deve se o metodo somar foi chamado pelo 3 vezes', () =>{
+  //   calculadora.somar(1,2);
+  //   calculadora.somar(1,2);
+  //   calculadora.somar(1,2);
+
+  //   expect(calculadora.somar).toHaveBeenCalledTimes(3);
+  // });
+
+  it('deve chamar o metodo com parametros validos', () =>{
+    calculadora.somar(1,2);
+    calculadora.somar(1,3);
+    calculadora.somar(1,5);
+
+    expect(calculadora.somar).toHaveBeenCalledWith(1,2);
+    expect(calculadora.somar).toHaveBeenCalledWith(1,3);
+    expect(calculadora.somar).toHaveBeenCalledWith(1,5);
   });
+
+
+
+
+
+
+
+
+
+
+
+
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
+
+  // it('deve incrementar o contador para 2', () => {
+  //   expect(contador).toEqual(12);
+  //   pending("pq n sei validar esse cenario")
+  // });
 
 
 
@@ -51,7 +92,7 @@ describe('TesteComponent', () => { //suite
   //   const aluno = {value: true};
   //   const professor = {value: true};
 
-  //   expect(aluno).toEqual(professor);
+  //   expect(aluno).not.toBeDefined();
 
   // });
 
@@ -111,7 +152,7 @@ describe('TesteComponent', () => { //suite
   // });
 
   // it('should be maior que 20', () => {
-  //   expect(component.shouldBeGreater()).toBeLessThan(10);
+  //   expect(component.shouldBeGreater()).toBeGreaterThan(10);
   // });
 
   // it('should be toThrow', () => {

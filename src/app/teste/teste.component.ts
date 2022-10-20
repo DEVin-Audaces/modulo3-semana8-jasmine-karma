@@ -40,7 +40,7 @@ export class TesteComponent implements OnInit {
   }
 
   shouldBeGreater(): number {
-    return 1;
+    return 20;
   }
 
   multiplicar(): number{
@@ -55,6 +55,12 @@ export class TesteComponent implements OnInit {
       throw new TypeError("deve ser maior que o")
     }
     return n1+n2;
+  }
+
+  calculadora = {
+    somar: function(n1: number, n2:number){
+      return n1+n2;
+    }
   }
 
 
